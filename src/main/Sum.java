@@ -1,8 +1,8 @@
 package main;
 
 public class Sum implements Expression {
-    public Expression augend;
-    public Expression addend;
+    public Expression augend;   // 피가산수
+    public Expression addend;   // 가수
 
     public Sum(Expression augend, Expression addend) {
         this.augend = augend;
@@ -17,6 +17,11 @@ public class Sum implements Expression {
 
     @Override
     public Expression plus(Expression addend) {
-        return null;
+        return new Sum(this, addend);
     }
+
+    public Expression times(int multiplier) {
+        return new Sum(augend.times(multiplier), addend.times(multiplier));
+    }
+
 }
