@@ -1,14 +1,22 @@
 public class Franc extends Money {
-    Franc(int amount) {
-        this.amount = amount;
+
+    private String currency;
+
+    Franc(int amount, String currency) {
+        super(amount, currency);
     }
 
-    Franc times(int multiplier) {
-        return new Franc(amount * multiplier);
+    Money times(int multiplier) {
+        return Money.franc(amount * multiplier);
+    }
+
+    @Override
+    String currency() {
+        return currency;
     }
 
     public boolean equals(Object object) {
-        Money money = (Franc) object;
+        Money money = (Money) object;
         return amount == money.amount;
     }
 }
