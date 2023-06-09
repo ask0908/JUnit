@@ -1,14 +1,18 @@
 class Sum implements Expression {
-    Money augend; // 피가산수
-    Money addend;
+    Expression augend; // 피가산수
+    Expression addend; // 가수
 
-    public Sum(Money augend, Money addend) {
+    public Sum(Expression augend, Expression addend) {
         this.augend = augend;
         this.addend = addend;
     }
 
     public Money reduce(Bank bank, String to) {
-        int amount = augend.amount + addend.amount;
+        int amount = augend.reduce(bank, to).amount + addend.reduce(bank, to).amount;
         return new Money(amount, to);
+    }
+
+    public Expression plus(Expression addend) {
+        return null;
     }
 }
