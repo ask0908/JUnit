@@ -2,7 +2,7 @@ class Money implements Expression {
     protected int amount;
     protected String currency;
 
-    Expression times(int multiplier) {
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
